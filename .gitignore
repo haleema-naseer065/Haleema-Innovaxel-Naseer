@@ -1,0 +1,60 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.virtualenv/
+
+# Django migrations (if you prefer excluding)
+migrations/
+
+# Django generated files
+*.log
+db.sqlite3
+media/
+
+# Sensitive settings
+local_settings.py
+.env
+.env.*
+
+# MySQL database files
+*.sql
+*.db
+
+# IDE and Editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage report
+htmlcov/
+.coverage
+.coverage.*
+
+# Build folders
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Other unwanted files
+*.swp
+*.swo
+*~
