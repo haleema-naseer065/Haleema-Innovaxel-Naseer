@@ -21,3 +21,17 @@ def create_short_url(request):
   serializer = ShortURLSerializer(short_url)
 
   return Response(serializer.data,status = status.HTTP_201_CREATED)
+
+@api_view(['GET'])
+def retrieve_short_url(request,shortCode):
+  try:
+    short_url = ShortURL.objects.get(shortCode = shortCode)
+    short_url.access_count += 1
+    short_url.save()
+
+    serializer = ShortURLSerializer(short_url)
+
+    return Response(serializer.data,status = status.HTTP_200_OK)
+
+  except ShortURL.DoesNotExist:
+    return Response({'error': shortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
