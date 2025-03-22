@@ -42,6 +42,8 @@ def retrieve_short_url(request,shortCode):
   except ShortURL.DoesNotExist:
     return Response({'error': shortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
 
+
+
 @api_view(['DELETE'])
 def delete_short_url(request,shortCode):
   try:
@@ -51,3 +53,24 @@ def delete_short_url(request,shortCode):
 
   except ShortURL.DoesNotExist:
     return Response({'error': shortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['PUT'])
+def update_short_url(request,shortCode):
+  
+  url = request.data.get('url')
+  if not url:
+    return Response({'error':'URL is required'},status = status.HTTP_400_BAD_REQUEST)
+  
+  try:
+    short_url = ShortURL.objects.get(shortCode = shortCode)
+    short_url.url = url
+    short_url.updated_at = timezone.now()
+    short_url.save()
+
+    serializer = ShortURLSerializer(short_url)
+    return Response(serializer.data,status = status.HTTP_200_OK)
+
+  except ShortURL.DoesNotExist:
+    return Response({'error':ShortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
+    
