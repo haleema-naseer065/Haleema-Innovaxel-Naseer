@@ -69,7 +69,7 @@ def update_short_url(request,shortCode):
     return Response({'error':ShortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
     
 @api_view(['GET'])
-def url_statistics(request,shortCode):
+def stats_short_url(request,shortCode):
   try:
     short_url = ShortURL.objects.get(shortCode = shortCode)
     serializer = ShortURLSerializer(short_url)
