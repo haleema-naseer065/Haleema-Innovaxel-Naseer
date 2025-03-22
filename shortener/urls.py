@@ -6,4 +6,5 @@ urlpatterns = [
     path('test-retrieve/<str:shortCode>/', views.retrieve_short_url, name='retireve_short_url'),
     path('test-delete/<str:shortCode>/', views.delete_short_url, name='delete_short_url'),
     path('test-update/<str:shortCode>/', views.update_short_url, name='update_short_url'),
+    path('test-stats/<str:shortCode>/', views.stats_short_url, name='stats_short_url'),
 ]
