@@ -24,8 +24,8 @@ This is a **Django-based URL Shortener API** that allows users to:
 
 ### 1️⃣ **Clone the Repository**
 ```bash
-    git clone https://github.com/haleema-naseer065/url_shortener.git
-    cd url-shortener
+    git clone https://github.com/haleema-naseer065/Haleema-Innovaxel-Naseer.git
+    cd Haleema-Innovaxel-Naseer
 ```
 
 ### 2️⃣ **Set Up Virtual Environment**
@@ -42,15 +42,15 @@ This is a **Django-based URL Shortener API** that allows users to:
 ### 4️⃣ **Configure MySQL Database**
 Make sure MySQL is installed and running. Then, create a database:
 ```sql
-    CREATE DATABASE url_shortener_db;
+    CREATE DATABASE url;
 ```
 Edit `settings.py` and configure database connection:
 ```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'url_shortener_db',
-        'USER': 'your_mysql_user',
+        'NAME': 'url',
+        'USER': 'root',
         'PASSWORD': 'your_mysql_password',
         'HOST': 'localhost',
         'PORT': '3306',
@@ -71,18 +71,18 @@ DATABASES = {
 Server will start at: `http://127.0.0.1:8000/`
 
 ## 📡 API Endpoints
-| Method | Endpoint                  | Description                        |
-|--------|---------------------------|------------------------------------|
-| POST   | `/api/shorten/`           | Create a short URL                |
-| GET    | `/api/shorten/<code>/`    | Retrieve the original URL          |
-| PUT    | `/api/shorten/<code>/update/` | Update a short URL          |
-| DELETE | `/api/shorten/<code>/delete/` | Delete a short URL          |
-| GET    | `/api/shorten/<code>/stats/`  | Get access count statistics |
+| Method | Endpoint             | Description                        |
+|--------|----------------------|------------------------------------|
+| POST   | `/shorten/`          | Create a short URL                 |
+| GET    | `/shorten/<code>/`   | Retrieve the original URL          |
+| PUT    | `/shorten/<code>/`   | Update a short URL                 |
+| DELETE | `/shorten/<code>/`   | Delete a short URL                 |
+| GET    | `/statistics/<code>/`| Get access count statistics        |
 
 ### 📍 Example Request: Create Short URL
 **Request:**
 ```json
-POST /api/shorten/
+POST /shorten/
 {
     "url": "https://www.example.com/long-url"
 }
@@ -102,7 +102,7 @@ POST /api/shorten/
 ### 📍 Example Request: Retrieve Original URL
 **Request:**
 ```bash
-GET /api/shorten/abc123/
+GET /shorten/abc123/
 ```
 **Response:** *(Redirects to original URL)*
 
