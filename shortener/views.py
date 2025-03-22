@@ -41,3 +41,13 @@ def retrieve_short_url(request,shortCode):
 
   except ShortURL.DoesNotExist:
     return Response({'error': shortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
+
+@api_view(['DELETE'])
+def delete_short_url(request,shortCode):
+  try:
+    short_url = ShortURL.objects.get(shortCode= shortCode)
+    short_url.delete()
+    return Response(status = status.HTTP_204_NO_CONTENT)
+
+  except ShortURL.DoesNotExist:
+    return Response({'error': shortCode + 'does not exist'},status = status.HTTP_404_NOT_FOUND)
